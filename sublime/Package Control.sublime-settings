@@ -1,0 +1,25 @@
+{
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"3024 Color Scheme",
+		"AngularJS",
+		"Color Highlighter",
+		"ColorPicker",
+		"DocBlockr",
+		"Git",
+		"HTML-CSS-JS Prettify",
+		"nginx",
+		"Package Control",
+		"Sass",
+		"SFTP",
+		"SublimeCodeIntel",
+		"SublimeLinter",
+		"SublimeLinter-jshint",
+		"Sublimerge Pro",
+		"SublimeSBT",
+		"Vagrant"
+	]
+}

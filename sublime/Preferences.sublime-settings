@@ -1,0 +1,57 @@
+{
+	"binary_file_patterns":
+	[
+		"dist/*",
+		"node_modules/*",
+		"bower_components/*",
+		"target/*",
+		"build/*",
+		".tmp/*",
+		".settings/*",
+		".idea_modules/*",
+		"templates.js",
+		"*.jpg",
+		"*.jpeg",
+		"*.png",
+		"*.gif",
+		"*.ttf",
+		"*.tga",
+		"*.dds",
+		"*.ico",
+		"*.eot",
+		"*.pdf",
+		"*.swf",
+		"*.jar",
+		"*.zip",
+		"*.class",
+		".DS_Store"
+	],
+	"color_scheme": "Packages/User/SublimeLinter/Monokai Bright (SL).tmTheme",
+	"file_exclude_patterns":
+	[
+		".DS_Store"
+	],
+	"folder_exclude_patterns":
+	[
+		".svn",
+		".git",
+		".hg",
+		"CVS",
+		".idea",
+		".sass-cache",
+		".target",
+		".settings",
+		".idea_modules",
+		"projectFilesBackup*",
+		".vagrant"
+	],
+	"font_size": 13,
+	"ignored_packages":
+	[
+		"Color Highlighter",
+		"SublimeCodeIntel",
+		"Vintage"
+	],
+	"translate_tabs_to_spaces": true,
+	"word_wrap": "true"
+}
