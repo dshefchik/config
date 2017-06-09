@@ -1,2 +1,3 @@
 # config
-Holds various generic configuration files
+
+The config files for most of the tools I use
