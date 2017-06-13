@@ -54,9 +54,17 @@ export PURPLE
 export BOLD
 export RESET
 
+# git config
+if [ -f ~/git-completion.bash ]; then
+    . ~/git-completion.bash
+fi
+
+export GIT_MERGE_AUTOEDIT=no
+export EDITOR=vim
+
 # Git branch details
 function parse_git_dirty() {
-    [[ $(git status 2> /dev/null | tail -n1) != *"working directory clean"* ]] && echo "*"
+    [[ $(git status 2> /dev/null | tail -n1) != *"working tree clean"* ]] && echo "*"
 }
 
 function parse_git_branch() {
@@ -83,6 +91,9 @@ show_virtual_env() {
 
 export PS1='$(show_virtual_env)'$PS1
 
+# set up direnv for Python
+eval "$(direnv hook bash)"
+
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -94,18 +105,8 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-# git config
-if [ -f ~/git-completion.bash ]; then
-    . ~/git-completion.bash
-fi
-
-export GIT_MERGE_AUTOEDIT=no
-export EDITOR=vim
-
 # AWS
 complete -C aws_completer aws
-
-export PATH
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
@@ -114,5 +115,4 @@ export PATH
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash
 
-# set up direnv for Python
-eval "$(direnv hook bash)"
+export PATH

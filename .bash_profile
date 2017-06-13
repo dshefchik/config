@@ -17,8 +17,8 @@ fi
 export JAVA_HOME=$(/usr/libexec/java_home)
 export JAVA_OPTS="-Xms512M -Xmx2048M -Xss1M -XX:+CMSClassUnloadingEnabled"
 
-export GITAWAREPROMPT=~/.bash/git-aware-prompt
-source "${GITAWAREPROMPT}/main.sh"
+#export GITAWAREPROMPT=~/.bash/git-aware-prompt
+#source "${GITAWAREPROMPT}/main.sh"
 
 export WORKON_HOME=~/Envs
 
