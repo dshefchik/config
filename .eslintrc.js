@@ -1,5 +1,13 @@
 module.exports = {
     "extends": "eslint:recommended",
+    "parserOptions": {
+       "ecmaVersion": 6
+    },
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6" : true
+    },
     "rules": {
         // enable additional rules
         "indent": ["error", 4],
@@ -10,8 +18,6 @@ module.exports = {
         // override default options for rules from base configurations
         "comma-dangle": ["error", "always"],
         "no-cond-assign": ["error", "always"],
-
-        // disable rules from base configurations
-        "no-console": "off",
+        "no-console" : "off"
     }
 }
