@@ -13,16 +13,13 @@ HISTCONTROL=ignoreboth
 # append to the history file, don't overwrite it
 shopt -s histappend
 
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
-
 # check the kickass window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
 if tput setaf 1 &> /dev/null; then
     tput sgr0
     if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
@@ -54,11 +51,6 @@ export PURPLE
 export BOLD
 export RESET
 
-# git config
-if [ -f ~/git-completion.bash ]; then
-    . ~/git-completion.bash
-fi
-
 export GIT_MERGE_AUTOEDIT=no
 export EDITOR=vim
 
@@ -81,7 +73,7 @@ export PS2="\[$ORANGE\]→ \[$RESET\]"
 ### Misc
 
 # Only show the current directory's name in the tab
-export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
+# export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 
 show_virtual_env() {
   if [ -n "$VIRTUAL_ENV" ]; then
@@ -108,11 +100,7 @@ fi
 # AWS
 complete -C aws_completer aws
 
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash
+# Add git autocomplete support
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
 export PATH
