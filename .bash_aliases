@@ -26,3 +26,6 @@ alias ga='git add .'
 alias gcm='git commit -m' # requires you to type a commit message
 alias gp='git push'
 alias grm='git rm $(git ls-files --deleted)'
+
+# Reload port mapping config
+alias portf='sudo pfctl -ef /etc/pf.conf'

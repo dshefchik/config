@@ -1,3 +1,5 @@
+#! /bin/bash
+#
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -23,11 +25,13 @@ shopt -s checkwinsize
 if tput setaf 1 &> /dev/null; then
     tput sgr0
     if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
+        CYAN=$(tput setaf 45)
         MAGENTA=$(tput setaf 9)
         ORANGE=$(tput setaf 172)
         GREEN=$(tput setaf 190)
         PURPLE=$(tput setaf 141)
     else
+        CYAN=$(tput setaf 14)
         MAGENTA=$(tput setaf 5)
         ORANGE=$(tput setaf 4)
         GREEN=$(tput setaf 2)
@@ -36,6 +40,7 @@ if tput setaf 1 &> /dev/null; then
     BOLD=$(tput bold)
     RESET=$(tput sgr0)
 else
+    CYAN="\033[0;36m"
     MAGENTA="\033[1;31m"
     ORANGE="\033[1;33m"
     GREEN="\033[1;32m"
@@ -44,6 +49,7 @@ else
     RESET="\033[m"
 fi
 
+export CYAN
 export MAGENTA
 export ORANGE
 export GREEN
@@ -75,16 +81,21 @@ export PS2="\[$ORANGE\]→ \[$RESET\]"
 # Only show the current directory's name in the tab
 # export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 
+#
+# Configure Virtualenv
+#
 show_virtual_env() {
   if [ -n "$VIRTUAL_ENV" ]; then
-    echo "($(basename $VIRTUAL_ENV))"
+    echo "${CYAN}($(basename $VIRTUAL_ENV))$RESET "
   fi
 }
 
-export PS1='$(show_virtual_env)'$PS1
+export PS1="$(show_virtual_env)$PS1"
 
-# set up direnv for Python
-eval "$(direnv hook bash)"
+# Prefer python3
+VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+[ -f /usr/local/bin/python3 ] && VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+export VIRTUALENVWRAPPER_PYTHON
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases

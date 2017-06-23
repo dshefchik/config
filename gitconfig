@@ -1,0 +1,11 @@
+[credential]
+	name = David Shefchik
+	helper = osxkeychain
+[alias]
+		logd = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+		lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+		br = branch --format='%(align:56,left)%(color:red)%(refname:short)%(color:reset)%(end) %(color:yellow)%(objectname:short)%(color:reset) %(subject) %(color:green)%(committerdate:relative) %(color:blue)<%(committername)>%(color:reset)'
+		co = checkout
+		s = status
+		sa = status --all
+		b = branch

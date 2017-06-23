@@ -1,4 +1,6 @@
+#! /bin/
 if [ -f ~/.bashrc ]; then
+  # shellcheck source=.bashrc
    . ~/.bashrc
 fi
 
@@ -6,15 +8,27 @@ export CLICOLOR=true
 export CLICOLOR_FORCE=true
 
 # Ignore .DS_Store files in 'ls' command
-function ll { ls $@ | grep -v .DS_Store; }
+function ll {
+  shopt -s extglob
+  ls -dla !('DS_Store')
+}
+
+# Auto-add ssh keys to keychain
+alias ssh-add='ssh-add -K'
 
 # Java
-export JAVA_HOME=$(/usr/libexec/java_home)
-export JAVA_OPTS="-Xms512M -Xmx2048M -Xss1M -XX:+CMSClassUnloadingEnabled"
+JAVA_HOME=$(/usr/libexec/java_home)
+export JAVA_HOME
+
+JAVA_OPTS="-Xms512M -Xmx2048M -Xss1M -XX:+CMSClassUnloadingEnabled"
+export JAVA_OPTS
 
 # Add git autocomplete support
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
+brew_prefix="$(brew --prefix)"
+
+if [ -f $brew_prefix/etc/bash_completion ]; then
+    # shellcheck source=/usr/local/etc/bash_completion
+    . $brew_prefix/etc/bash_completion
 fi
 
 export WORKON_HOME=~/Envs
